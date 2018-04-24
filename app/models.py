@@ -1,5 +1,6 @@
 from . import db
 from datetime import datetime
+from twilio.rest import Client
 
 class Events(db.Model):
 
