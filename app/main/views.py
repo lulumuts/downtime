@@ -20,7 +20,7 @@ def event():
         where=form.where.data
         message=form.message.data
 
-        new_event=Events(who=who, what=what, when=when, where=where,when=when,message=message)
+        new_event=Events(who=who, what=what, when=when, where=where,message=message)
 
         new_event.save_event()
         return redirect(url_for('.index'))
