@@ -9,7 +9,7 @@ class ProdConfig(Config):
 class DevConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI =  'postgresql+psycopg2://kiptim:jerotich@localhost/downtime'
-    SECRET_KEY=os.environ.get('DOWNTIME2018')
+    SECRET_KEY='DOWNTIME2018'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
 
