@@ -1,6 +1,7 @@
 from . import main
 from flask import render_template,redirect, url_for
 from .forms import EventsForm
+from ..models import Events
 from ..import db
 
 @main.route('/')
