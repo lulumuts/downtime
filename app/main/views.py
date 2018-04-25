@@ -62,7 +62,7 @@ def event():
                     where=form.where.data
                     message=form.message.data
 
-                    
+
                     print("hello")
                     print(phone, message)
 
@@ -73,7 +73,7 @@ def event():
                     from_="+12522622704",
                     body=form.message.data
                     )
-                    break
+
                     new_event=Events(name=name,phone=phone, what=what, y=y,m=m,d=d, where=where,message=message)
 
                     new_event.save_event()
