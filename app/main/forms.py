@@ -16,5 +16,4 @@ class ContactForm(FlaskForm):
     name = StringField('Name', validators=[Required()])
     phone_number = IntegerField('Phone Number', validators=[Required()])
     email = StringField('Email', validators=[Required()])
-    event_id = StringField('Event', validators=[Required()])
     submit = SubmitField('Submit')
