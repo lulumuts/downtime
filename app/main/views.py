@@ -1,7 +1,7 @@
 from . import main
 from flask import render_template,redirect, url_for,request
-from .forms import EventsForm
-from ..models import Events
+from .forms import EventsForm,ContactForm
+from ..models import Events,Contact
 from ..import db
 from twilio.rest import Client
 
@@ -32,7 +32,7 @@ def event():
         body=form.message.data
         )
 
-        new_event=Events(who=who, what=what, when=when, where=where,message=message)
+        new_event=Events(who=contact_id, what=what, when=when, where=where,message=message)
 
         new_event.save_event()
         return redirect(url_for('.index'))
@@ -61,8 +61,47 @@ def send():
 
     return render_template('index.html', message=send)
 
-    '''
+@main.route('/')
+def contact():
+    contacts = Contact.query.all()
+    return render_template('contact.html', contacts=contacts)
+
+@main.route('/contacts', methods = ['GET','POST'])
+def create_contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        contact = Contact(
+        name = form.name.data,
+        email = form.email.data,
+        phone_number = form.phone_number.data
+        )
+        db.session.add(contact)
+        db.session.commit()
+        return redirect(url_for('contact.index'))
+    return render_template('contacts.html', contacts_form=form)
+'''
+
+@main.route('/contacts<int:contact_id>')
+def view_contact(contact_name):
+    contact = Contact.query.filter_by(id=contact_name).first()
+    if contact:
+        return render_template('contacts.html', contact=contact)
+    return 'Contact not found'
+'''
+
+'''
+@main.route('/contacts<int:contact_id>')
+def delete_contact(contact_name):
+    contact = Contact.query.get(id=contact_name)
+
+    db.session.delete(contact)
+    db.session.commit()
+
+    return render_template('contacts.html')
+'''
+
+'''
     message = client.messages.create(to="+254719656398",from_="+12522622704",body=)
 
     print(message.sid)
-    '''
+'''

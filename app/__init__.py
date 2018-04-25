@@ -14,8 +14,6 @@ def create_app(config_state):
 
     app.config.from_object(config_options[config_state])
 
-
-
     bootstrap.init_app(app)
     db.init_app(app)
 
