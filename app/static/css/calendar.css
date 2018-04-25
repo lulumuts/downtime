@@ -1,12 +1,10 @@
 body{
   font-family: 'Abel', sans-serif;
-
 }
 table{
-
-  margin-left: 1vw;
-  width:20vw;
-
+  margin-left: 1.5vw;
+  width:24vw;
+  border-width: 0;
 }
 .month{
   font-size: 110%;
@@ -14,10 +12,18 @@ table{
   color:white;
 }
 .date{
-  font-size: 20vh;
+  font-size: 18vh;
   color:white;
 }
 td{
   border-radius: 10%;
-  background-color: black;
+  background-color: darkgrey;
+  border-width: 0;
+}
+.year{
+  border-width: 0;
+}
+#year{
+  font-size: 30vh;
+  color:darkgrey;
 }
