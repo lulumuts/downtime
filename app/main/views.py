@@ -4,6 +4,9 @@ from .forms import EventsForm,ContactForm
 from ..models import Events,Contact
 from ..import db
 from twilio.rest import Client
+import time
+import calendar
+import datetime
 
 account_sid='AC905360593c371acea0ec4417770b3fd5'
 auth_token='d962e83a5a6c92b72a2530e705db61eb'
@@ -15,31 +18,70 @@ def index():
 
 @main.route('/events', methods = ['GET','POST'])
 def event():
-    client = Client(account_sid, auth_token)
+
 
     form = EventsForm()
+    tday = datetime.date.today() #prints out todays date
+
 
 
     if form.validate_on_submit():
-        contacts_id= form.contacts_id.data
-        what=form.what.data
-        when=form.when.data
-        where=form.where.data
-        message=form.message.data
 
-        client = Client(account_sid, auth_token)
-        client.api.account.messages.create(
-        to="+254727481326",
-        from_="+12522622704",
-        body=form.message.data
-        )
+        y=int(form.y.data)
+        m=int(form.m.data)
+        d=int(form.d.data)
+        dday = datetime.date(y, m , d)
 
-        new_event=Events(contacts_id=contacts_id, what=what, when=when, where=where,message=message)
+        till_dday = dday - tday
+        x = till_dday.total_seconds()
+        while True:
+            uin = x
+            print(uin)
+            try:
+                when_to_stop = abs(int(uin))
+            except KeyboardInterrupt:
+                    break
+            except:
+                print("Not a number! :P ")
 
-        new_event.save_event()
-        return redirect(url_for('.index'))
+            while when_to_stop >= 0:
+                    m, s = divmod(when_to_stop, 60)
+                    h, m = divmod(m, 60)
+                    d, h = divmod(h, 24)
+                    time_left = (str(h).zfill(2) + ":" + str(m).zfill(2) + ":" + str(s).zfill(2))
+                    print(time_left + "\r", end="")
+                    time.sleep(1)
+                    when_to_stop -= 1
+
+            #if statement: replaces the print statement with the event that was set by the user...
+            if  time_left == "00:00:00":
+                if form.validate_on_submit():
+                    name= form.name.data
+                    phone=form.phone.data
+                    what=form.what.data
+                    where=form.where.data
+                    message=form.message.data
+
+                    
+                    print("hello")
+                    print(phone, message)
+
+
+                    client = Client(account_sid, auth_token)
+                    client.api.account.messages.create(
+                    to=form.phone.data,
+                    from_="+12522622704",
+                    body=form.message.data
+                    )
+                    break
+                    new_event=Events(name=name,phone=phone, what=what, y=y,m=m,d=d, where=where,message=message)
+
+                    new_event.save_event()
+                    return redirect(url_for('.index'))
 
     return render_template('events.html', events_form=form,message=form)
+
+
 
 @main.route('/send',methods=['POST'])
 def send():

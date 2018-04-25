@@ -19,9 +19,11 @@ class Events(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     name= db.Column(db.String(255))
-    phone=what = db.Column(db.String(255))
+    phone = db.Column(db.String(255))
     what = db.Column(db.String(255))
-    when = db.Column(db.DateTime,default=datetime.utcnow)
+    y = db.Column(db.Integer)
+    m = db.Column(db.Integer)
+    d = db.Column(db.Integer)
     where = db.Column(db.String(255))
     message = db.Column(db.String(255))
 
