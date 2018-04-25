@@ -1,0 +1,23 @@
+body{
+  font-family: 'Abel', sans-serif;
+
+}
+table{
+
+  margin-left: 1vw;
+  width:20vw;
+
+}
+.month{
+  font-size: 110%;
+  text-align: center;
+  color:white;
+}
+.date{
+  font-size: 20vh;
+  color:white;
+}
+td{
+  border-radius: 10%;
+  background-color: black;
+}
