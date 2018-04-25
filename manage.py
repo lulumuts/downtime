@@ -5,6 +5,7 @@ from twilio.rest import Client
 from app import create_app,db
 
 app = create_app('default')
+app.app_context().push()
 
 migrate=Migrate(app,db)
 manager = Manager(app)

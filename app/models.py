@@ -3,6 +3,7 @@ from datetime import datetime
 from twilio.rest import Client
 
 
+
 class Contact(db.Model):
     __tablename__ = 'contacts'
 
@@ -11,12 +12,14 @@ class Contact(db.Model):
     name = db.Column(db.String(50), unique=True)
     email = db.Column(db.String, unique = True, index = True)
 
+
 class Events(db.Model):
 
     __tablename__ = 'events'
 
     id = db.Column(db.Integer,primary_key = True)
-    contacts_id= db.Column(db.Integer,db.ForeignKey('contacts.id'))
+    name= db.Column(db.String(255))
+    phone=what = db.Column(db.String(255))
     what = db.Column(db.String(255))
     when = db.Column(db.DateTime,default=datetime.utcnow)
     where = db.Column(db.String(255))

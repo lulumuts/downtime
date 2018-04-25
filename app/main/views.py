@@ -16,10 +16,12 @@ def index():
 @main.route('/events', methods = ['GET','POST'])
 def event():
     client = Client(account_sid, auth_token)
+
     form = EventsForm()
 
+
     if form.validate_on_submit():
-        who= form.who.data
+        contacts_id= form.contacts_id.data
         what=form.what.data
         when=form.when.data
         where=form.where.data
@@ -32,7 +34,7 @@ def event():
         body=form.message.data
         )
 
-        new_event=Events(who=contact_id, what=what, when=when, where=where,message=message)
+        new_event=Events(contacts_id=contacts_id, what=what, when=when, where=where,message=message)
 
         new_event.save_event()
         return redirect(url_for('.index'))
