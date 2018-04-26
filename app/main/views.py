@@ -15,9 +15,8 @@ account_sid = "ACe575d698f9831196aaabf61d43813cf6"
 auth_token = "42fd23665468ca5701ec9eb06091a2b1"
 
 
-def send_sms(to,body,y,m,d):
-    tday = datetime.date.today() #prints out todays date
-    dday = datetime.date(y, m , d)
+def send_sms(to,body,dday):
+    tday = datetime.datetime.today() #prints out todays date    
 
     print(tday)
     print(dday)
@@ -68,10 +67,12 @@ def event():
 
 
     if form.validate_on_submit():
-
-        y=int(form.y.data)
-        m=int(form.m.data)
-        d=int(form.d.data)
+        duedate=form.Date.data
+        dtime= form.Time.data
+        year, month, day = map(int, duedate.split(','))
+        hour, minute = map(int, dtime.split(':'))
+        dday = datetime.datetime(year, month, day, hour, minute)
+        
                         
         name= form.name.data
         phone=form.phone.data
@@ -83,12 +84,12 @@ def event():
         print("hello")
         print(phone, message)
 
-        thr = Thread(target=send_sms,args=[phone,message,y,m,d])
+        thr = Thread(target=send_sms,args=[phone,message,dday])
         thr.start()
 
 
 
-        new_event=Events(name=name,phone=phone, what=what, y=y,m=m,d=d, where=where,message=message)
+        new_event=Events(name=name,phone=phone, what=what,time=dtime,date=duedate ,where=where,message=message)
 
         new_event.save_event()
         return redirect(url_for('.index'))

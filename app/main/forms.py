@@ -1,18 +1,17 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField,DateField, SubmitField,IntegerField
+from wtforms import StringField, TextAreaField,DateField, SubmitField,IntegerField,DateTimeField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import Required
 
 class EventsForm(FlaskForm):
 
-    name = StringField('contact', validators=[Required()])
-    phone = StringField('phone', validators=[Required()])
-    what = TextAreaField('event',validators=[Required()])
-    y= IntegerField('year',validators=[Required()])
-    m=IntegerField('month',validators=[Required()])
-    d=IntegerField('day',validators=[Required()])
-    where = StringField('location',validators=[Required()])
-    message = TextAreaField('queued message',validators=[Required()])
+    name = StringField('Contact', validators=[Required()])
+    phone = StringField('Phone /+254719098564/', validators=[Required()])
+    what = TextAreaField('Event',validators=[Required()])
+    Date = StringField("Enter Date /yyy,mm,dd/:", validators=[Required()])
+    Time = StringField("Enter Time: /00:00/", validators=[Required()])
+    where = StringField('Location',validators=[Required()])
+    message = TextAreaField('Queued message',validators=[Required()])
     submit = SubmitField('Submit')
 
 class ContactForm(FlaskForm):
