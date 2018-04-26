@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/navbar.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
   </head>
 
   <body>
-    <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar navbar-secondary" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -15,19 +17,16 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"> DOWNTIME </a>
+
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                </ul>
+
 
                 <ul class="nav navbar-nav navbar-right">
 
-                  <li>current user</li>
-                  <li>>Sign out</li>
-
-                  <li>>Sign in</a></li>
+                      <li><a href="/">HOME</a></li>
+                      <li><a href="/">SIGN IN</a></li>
+                      <li><a href="/">SIGN OUT</a></li>
 
                 </ul>
             </div>

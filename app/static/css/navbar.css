@@ -1,0 +1,10 @@
+.navbar{
+  font-family: 'Abel', sans-serif;
+  font-size: 4vh;
+  padding-top: 2vh;
+
+}
+.nav.navbar-nav.navbar-right li a {
+    color: grey;
+  
+}
