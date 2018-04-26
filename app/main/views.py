@@ -9,11 +9,14 @@ import calendar
 import datetime
 from threading import Thread
 
-# account_sid='AC905360593c371acea0ec4417770b3fd5'
-# auth_token='d962e83a5a6c92b72a2530e705db61eb'
-account_sid = "ACe575d698f9831196aaabf61d43813cf6"
-auth_token = "42fd23665468ca5701ec9eb06091a2b1"
+account_sid = None
+auth_token = None
 
+def configure_views(app):
+    global account_sid,auth_token
+
+    account_sid= app.config['ACCOUNT_SID']
+    auth_token = app.config['AUTH_TOKEN']
 
 def send_sms(to,body,dday):
     tday = datetime.datetime.today() #prints out todays date

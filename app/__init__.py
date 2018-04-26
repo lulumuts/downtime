@@ -31,4 +31,7 @@ def create_app(config_state):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix= '/authenticate')
 
+    from .main.views import configure_views
+    configure_views(app)
+
     return app
