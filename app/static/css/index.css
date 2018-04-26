@@ -1,9 +1,25 @@
 body{
-background-image:url('/static/img/background.jpg');
-background-size: 100%;
+background-image:url('/static/img/downtime.jpg');
+background-size: 20%;
 padding-bottom: 200vh;
 background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
 
 
 /* background-color: black; */
+}
+
+.section section-header{
+  padding-top: 10vh;
+}
+h1{
+  background: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15em;
+  color: grey;
+  padding-top: 25vh;
+  padding-left: 10vw;
+  border-color: grey;
+
 }

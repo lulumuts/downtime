@@ -119,10 +119,10 @@ def send():
 
     return render_template('index.html', message=send)
 
-@main.route('/')
+@main.route('/calendar')
 def contact():
-    contacts = Contact.query.all()
-    return render_template('contact.html', contacts=contacts)
+
+    return render_template('calendar.html')
 
 @main.route('/contacts', methods = ['GET','POST'])
 def create_contact():

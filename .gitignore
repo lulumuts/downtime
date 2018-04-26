@@ -1,5 +1,13 @@
 
 virtual/
 *.pyc
+<<<<<<< HEAD
 start.sh
 migrations
+=======
+<<<<<<< HEAD
+=======
+start.sh
+migrations
+>>>>>>> ad62fd7325d3f9ad7d7c50b22a52ca621befa050
+>>>>>>> 2d82aa6340cde63c87b317037faa3b39fe50d25e

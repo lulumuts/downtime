@@ -5,15 +5,15 @@ from wtforms.validators import Required
 
 class EventsForm(FlaskForm):
 
-    name = StringField('contact', validators=[Required()])
-    phone = StringField('phone', validators=[Required()])
-    what = TextAreaField('event',validators=[Required()])
-    y= IntegerField('year',validators=[Required()])
-    m=IntegerField('month',validators=[Required()])
-    d=IntegerField('day',validators=[Required()])
-    where = StringField('location',validators=[Required()])
-    message = TextAreaField('queued message',validators=[Required()])
-    submit = SubmitField('Submit')
+    name = StringField('NAME', validators=[Required()])
+    phone = StringField('PHONE', validators=[Required()])
+    what = TextAreaField('EVENT',validators=[Required()])
+    y= IntegerField('YEAR',validators=[Required()])
+    m=IntegerField('MONTH',validators=[Required()])
+    d=IntegerField('DAY',validators=[Required()])
+    where = StringField('WHERE',validators=[Required()])
+    message = TextAreaField('MESSAGE',validators=[Required()])
+    submit = SubmitField('SUBMIT')
 
 class ContactForm(FlaskForm):
     name = StringField('Name', validators=[Required()])

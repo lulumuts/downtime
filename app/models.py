@@ -2,6 +2,9 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
+from twilio.rest import Client
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -14,7 +17,7 @@ class User( UserMixin, db.Model):
     email = db.Column(db.String, unique=True)
     phonenumber = db.Column(db.String, unique=True)
     pass_secure = db.Column(db.String)
-    
+
     @property
     def password(self):
         raise AttributeError('You cannot read password attribute')
@@ -29,5 +32,38 @@ class User( UserMixin, db.Model):
     def __repr__(self):
         return f'User{self.username}'
 
-    
-    
+
+
+from datetime import datetime
+from twilio.rest import Client
+
+
+
+class Contact(db.Model):
+    __tablename__ = 'contacts'
+
+    id = db.Column(db.Integer, primary_key = True)
+    phone_number = db.Column(db.Integer, unique = True)
+    name = db.Column(db.String(50), unique=True)
+    email = db.Column(db.String, unique = True, index = True)
+
+
+class Events(db.Model):
+
+    __tablename__ = 'events'
+
+    id = db.Column(db.Integer,primary_key = True)
+    name= db.Column(db.String(255))
+    phone = db.Column(db.String(255))
+    what = db.Column(db.String(255))
+    y = db.Column(db.Integer)
+    m = db.Column(db.Integer)
+    d = db.Column(db.Integer)
+    where = db.Column(db.String(255))
+    message = db.Column(db.String(255))
+
+
+    def save_event(self):
+        # Review.all_reviews.append(self)
+        db.session.add(self)
+        db.session.commit()
