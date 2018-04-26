@@ -18,14 +18,8 @@ manager.add_command('db',MigrateCommand)
 
 @manager.shell
 def make_shell_context():
-    return dict(app = app, db = db, Events = Events, account_sid=account_sid, auth_token=auth_token, Contact = Contact)
+    return dict(app = app, db = db, Events = Events, User=User)
 
-migrate = Migrate(app, db)
-manager.add_command('db', MigrateCommand)
-
-@manager.shell
-def make_shell_context():
-    return dict(app=app, db=db, User=User)
 
 if __name__ == '__main__':
     manager.run()

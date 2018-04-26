@@ -1,10 +1,12 @@
 body{
-background-image:url('/static/img/anotherone.jpg');
-background-size: 20%;
-padding-bottom: 200vh;
+background-image:url('/static/img/calendar.jpg');
+background-size: 100%;
+padding-bottom: 30vh;
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
+height:100%;
+
 
 
 /* background-color: black; */
@@ -12,21 +14,24 @@ background-position: center;
 
 .container {
   width:80%;
-  color:white;
+  color:grey;
   font-family: 'Rajdhani', sans-serif;
-  opacity:0.6;
+  opacity:0.8;
   margin-bottom: -10vh;
   font-size: 3vh;
+  margin-top: -1vh;
+  height:7%;
+
 }
 
 h1{
 
     background: none;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 15em;
+    font-size: 6em;
     color: grey;
-    margin-top: 30vh;
-    margin-left: 15vw;
+    margin-top: 8vh;
+    margin-left: 20vw;
     border-color: grey;
     padding-bottom: 9vh;
 

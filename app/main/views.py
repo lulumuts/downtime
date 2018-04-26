@@ -15,9 +15,8 @@ account_sid = "ACe575d698f9831196aaabf61d43813cf6"
 auth_token = "42fd23665468ca5701ec9eb06091a2b1"
 
 
-def send_sms(to,body,y,m,d):
-    tday = datetime.date.today() #prints out todays date
-    dday = datetime.date(y, m , d)
+def send_sms(to,body,dday):
+    tday = datetime.datetime.today() #prints out todays date
 
     print(tday)
     print(dday)
@@ -40,7 +39,7 @@ def send_sms(to,body,y,m,d):
             time_left = (str(d).zfill(2) + " " + str(h).zfill(2) + ":" + str(m).zfill(2) + ":" + str(s).zfill(2))
             print(time_left + "\r", end="")
             time.sleep(1)
-            when_to_stop -= 1                   
+            when_to_stop -= 1
 
             #if statement: replaces the print statement with the event that was set by the user...
             if  time_left == "00 00:00:00":
@@ -63,16 +62,18 @@ def event():
 
 
     form = EventsForm()
-    
+
 
 
 
     if form.validate_on_submit():
+        duedate=form.Date.data
+        dtime= form.Time.data
+        year, month, day = map(int, duedate.split(','))
+        hour, minute = map(int, dtime.split(':'))
+        dday = datetime.datetime(year, month, day, hour, minute)
 
-        y=int(form.y.data)
-        m=int(form.m.data)
-        d=int(form.d.data)
-                        
+
         name= form.name.data
         phone=form.phone.data
         what=form.what.data
@@ -83,12 +84,12 @@ def event():
         print("hello")
         print(phone, message)
 
-        thr = Thread(target=send_sms,args=[phone,message,y,m,d])
+        thr = Thread(target=send_sms,args=[phone,message,dday])
         thr.start()
 
 
 
-        new_event=Events(name=name,phone=phone, what=what, y=y,m=m,d=d, where=where,message=message)
+        new_event=Events(name=name,phone=phone, what=what,time=dtime,date=duedate ,where=where,message=message)
 
         new_event.save_event()
         return redirect(url_for('.index'))
@@ -119,47 +120,8 @@ def send():
 
     return render_template('index.html', message=send)
 
+
 @main.route('/calendar')
 def contact():
 
     return render_template('calendar.html')
-
-@main.route('/contacts', methods = ['GET','POST'])
-def create_contact():
-    form = ContactForm()
-    if form.validate_on_submit():
-        contact = Contact(
-        name = form.name.data,
-        email = form.email.data,
-        phone_number = form.phone_number.data
-        )
-        db.session.add(contact)
-        db.session.commit()
-        return redirect(url_for('main.index'))
-    return render_template('contacts.html', contacts_form=form)
-'''
-
-@main.route('/contacts<int:contact_id>')
-def view_contact(contact_name):
-    contact = Contact.query.filter_by(id=contact_name).first()
-    if contact:
-        return render_template('contacts.html', contact=contact)
-    return 'Contact not found'
-'''
-
-'''
-@main.route('/contacts<int:contact_id>')
-def delete_contact(contact_name):
-    contact = Contact.query.get(id=contact_name)
-
-    db.session.delete(contact)
-    db.session.commit()
-
-    return render_template('contacts.html')
-'''
-
-'''
-    message = client.messages.create(to="+254719656398",from_="+12522622704",body=)
-
-    print(message.sid)
-'''

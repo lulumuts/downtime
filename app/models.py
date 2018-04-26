@@ -56,9 +56,8 @@ class Events(db.Model):
     name= db.Column(db.String(255))
     phone = db.Column(db.String(255))
     what = db.Column(db.String(255))
-    y = db.Column(db.Integer)
-    m = db.Column(db.Integer)
-    d = db.Column(db.Integer)
+    date= db.Column(db.String)
+    time=db.Column(db.String)
     where = db.Column(db.String(255))
     message = db.Column(db.String(255))
 

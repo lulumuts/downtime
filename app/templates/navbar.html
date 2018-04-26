@@ -25,8 +25,14 @@
                 <ul class="nav navbar-nav navbar-right">
 
                       <li><a href="/">HOME</a></li>
+                      <li><a href="/calendar">CALENDAR</a></li>
+                      {% if current_user.is_anonymous%}
                       <li><a href="/authenticate/login">SIGN IN</a></li>
-                      <li><a href="/">SIGN OUT</a></li>
+                      {%else%}
+
+                      <li><a href="/authenticate/logout">SIGN OUT</a></li>
+                      {%endif%}
+
 
                 </ul>
             </div>
