@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+<!-- Content block -->
+{% block content %}
+
+  {{ wtf.quick_form(contacts_form) }}
+      {%for contact in contacts%}
+          {% if contacts%}
+            <p>{{contact.name.capitalize()}}</p>
+            <p>{{contact.phone_number}}</p>
+            <p>{{contact.email}}</p>
+            <hr>
+          {% endif%}
+        {% endfor %}
+        <button type="button" class="btn btn-info">Delete</button>
+
+{% endblock %}
