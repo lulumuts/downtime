@@ -2,16 +2,14 @@ from flask import Flask
 from config import config_options
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-<<<<<<< HEAD
 from twilio.rest import Client
-=======
 from flask_login import LoginManager
 
 
 login_manager = LoginManager()
 login_manager.session_protection ='strong'
 login_manager.login_view = 'auth.login'
->>>>>>> ad62fd7325d3f9ad7d7c50b22a52ca621befa050
+
 
 
 bootstrap = Bootstrap()
