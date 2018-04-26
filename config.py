@@ -7,15 +7,14 @@ class Config:
     ACCOUNT_SID = os.environ.get('ACCOUNT_SID')
     AUTH_TOKEN = os.environ.get('AUTH_TOKEN')
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lulumutuli:lulu@localhost/downtime'
+
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI =  os.environ.get('DATABASE_URL')
 
 class DevConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI =  'postgresql+psycopg2://lulumutuli:lulu@localhost/downtime'
-    SECRET_KEY='DOWNTIME2018'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
