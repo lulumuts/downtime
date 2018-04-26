@@ -1,4 +1,4 @@
-from . import main
+from  . import main
 from flask import render_template,redirect, url_for,request
 from .forms import EventsForm,ContactForm
 from ..models import Events,Contact
@@ -7,9 +7,51 @@ from twilio.rest import Client
 import time
 import calendar
 import datetime
+from threading import Thread
 
-account_sid='AC905360593c371acea0ec4417770b3fd5'
-auth_token='d962e83a5a6c92b72a2530e705db61eb'
+# account_sid='AC905360593c371acea0ec4417770b3fd5'
+# auth_token='d962e83a5a6c92b72a2530e705db61eb'
+account_sid = "ACe575d698f9831196aaabf61d43813cf6"
+auth_token = "42fd23665468ca5701ec9eb06091a2b1"
+
+
+def send_sms(to,body,y,m,d):
+    tday = datetime.date.today() #prints out todays date
+    dday = datetime.date(y, m , d)
+
+    print(tday)
+    print(dday)
+
+    till_dday = dday - tday
+    x = till_dday.total_seconds()
+    while True:
+        print(x)
+        try:
+            when_to_stop = abs(int(x))
+            print(when_to_stop)
+        except KeyboardInterrupt:
+                break
+        except:
+            print("Not a number! :P ")
+        while when_to_stop >= 0:
+            m, s = divmod(when_to_stop, 60)
+            h, m = divmod(m, 60)
+            d, h = divmod(h, 24)
+            time_left = (str(d).zfill(2) + " " + str(h).zfill(2) + ":" + str(m).zfill(2) + ":" + str(s).zfill(2))
+            print(time_left + "\r", end="")
+            time.sleep(1)
+            when_to_stop -= 1                   
+
+            #if statement: replaces the print statement with the event that was set by the user...
+            if  time_left == "00 00:00:00":
+                client = Client(account_sid, auth_token)
+                client.api.account.messages.create(
+                to=to,
+                from_="+12243850267",
+                body=body
+                )
+                return
+        break
 
 @main.route('/')
 def index():
@@ -21,7 +63,7 @@ def event():
 
 
     form = EventsForm()
-    tday = datetime.date.today() #prints out todays date
+    
 
 
 
@@ -30,54 +72,26 @@ def event():
         y=int(form.y.data)
         m=int(form.m.data)
         d=int(form.d.data)
-        dday = datetime.date(y, m , d)
-
-        till_dday = dday - tday
-        x = till_dday.total_seconds()
-        while True:
-            uin = x
-            print(uin)
-            try:
-                when_to_stop = abs(int(uin))
-            except KeyboardInterrupt:
-                    break
-            except:
-                print("Not a number! :P ")
-
-            while when_to_stop >= 0:
-                    m, s = divmod(when_to_stop, 60)
-                    h, m = divmod(m, 60)
-                    d, h = divmod(h, 24)
-                    time_left = (str(h).zfill(2) + ":" + str(m).zfill(2) + ":" + str(s).zfill(2))
-                    print(time_left + "\r", end="")
-                    time.sleep(1)
-                    when_to_stop -= 1
-
-            #if statement: replaces the print statement with the event that was set by the user...
-            if  time_left == "00:00:00":
-                if form.validate_on_submit():
-                    name= form.name.data
-                    phone=form.phone.data
-                    what=form.what.data
-                    where=form.where.data
-                    message=form.message.data
+                        
+        name= form.name.data
+        phone=form.phone.data
+        what=form.what.data
+        where=form.where.data
+        message=form.message.data
 
 
-                    print("hello")
-                    print(phone, message)
+        print("hello")
+        print(phone, message)
+
+        thr = Thread(target=send_sms,args=[phone,message,y,m,d])
+        thr.start()
 
 
-                    client = Client(account_sid, auth_token)
-                    client.api.account.messages.create(
-                    to=form.phone.data,
-                    from_="+12522622704",
-                    body=form.message.data
-                    )
 
-                    new_event=Events(name=name,phone=phone, what=what, y=y,m=m,d=d, where=where,message=message)
+        new_event=Events(name=name,phone=phone, what=what, y=y,m=m,d=d, where=where,message=message)
 
-                    new_event.save_event()
-                    return redirect(url_for('.index'))
+        new_event.save_event()
+        return redirect(url_for('.index'))
 
     return render_template('events.html', events_form=form,message=form)
 
