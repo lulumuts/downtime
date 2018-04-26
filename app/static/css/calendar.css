@@ -1,0 +1,96 @@
+body{
+  font-family: 'Abel', sans-serif;
+  background-image:url('/static/img/downtime.jpg');
+  /* background: #393A3C; */
+  /* background: white; */
+background: #808080;
+}
+/* table{
+  margin-left: 1.5vw;
+  width:24vw;
+  border-width: 0;
+} */
+.year{
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+table{
+  text-align: center;
+  margin: 0 auto;
+  width: auto
+}
+/* tbody {
+  height: 5vh;
+}
+thead {
+  height: 5vh;
+}
+tr{
+  max-height: 25vh;
+} */
+td{
+  max-width: 21vw;
+  max-height: 20vh;
+}
+table {
+  font-size: 10px;
+  margin-top: -175px;
+  width: 300px;
+}
+.momo{
+  height: 25vh;
+  /* width: 20vw; */
+  /* margin: 200px; */
+}
+.month{
+  width: 20%;
+  height: 25vh;
+  font-size: 10px;
+  text-align: center;
+  color:white;
+}
+.date{
+  font-size: 18vh;
+  color:white;
+}
+td{
+  /* border-radius: 3%; */
+  /* background-color: #808080; */
+  background-color: #393A3C;
+  border: 100px solid white;
+  border-width: 0;
+}
+.year{
+  border-width: 0;
+  margin-top: -35px;
+  margin-bottom: 7.5px;
+}
+/* table {
+  border-collapse: collapse;
+}
+table td, table th {
+  border: 1px solid #393A3C;
+}
+
+table tr:first-child th {
+  border-top: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
+} */
+table td {
+  min-width: 30px;
+}
+a:hover {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}

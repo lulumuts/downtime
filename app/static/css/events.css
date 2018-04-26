@@ -1,0 +1,35 @@
+body{
+background-image:url('/static/img/anotherone.jpg');
+background-size: 20%;
+padding-bottom: 200vh;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+
+
+/* background-color: black; */
+}
+
+.container {
+  width:80%;
+  color:white;
+  font-family: 'Rajdhani', sans-serif;
+  opacity:0.6;
+  margin-bottom: -10vh;
+  font-size: 3vh;
+}
+
+h1{
+
+    background: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15em;
+    color: grey;
+    margin-top: 30vh;
+    margin-left: 15vw;
+    border-color: grey;
+    padding-bottom: 9vh;
+
+
+
+}
