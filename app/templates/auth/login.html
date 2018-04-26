@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+
+
+{% endblock %}
+
 {% block content%}
 
 
@@ -13,12 +22,12 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ message }}
             </div>
-  
+
         {% endfor %}
           <p> <a href="{{url_for('auth.register')}}">Sign up</a> </p>
         </div>
     </div>
 </div>
-           
+
 
 {% endblock %}

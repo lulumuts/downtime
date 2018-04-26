@@ -16,7 +16,7 @@ class LoginForm(FlaskForm):
 def validate_email(form, data_field):
     if User.query.filter_by(email=data_field.data).first():
         raise ValidationError('This email already exists')
-    
+
 
 def validate_phonenumber(form, data_field):
     if User.query.filter_by(phonenumber= data_field.data).first():
@@ -25,12 +25,10 @@ def validate_phonenumber(form, data_field):
 
 class RegistrationForm(FlaskForm):
     Name = StringField('Name', validators=[Required()])
-    
+
     Email = StringField('Email', validators=[Required(), Email(), validate_email])
     Phonenumber = StringField('Phone Number', validators=[Required(), validate_phonenumber])
     Password = PasswordField("Password", validators=[Required(),
     EqualTo('password_confirm', message=' Passwords must match')])
     password_confirm = PasswordField('Confirm Passwords', validators=[Required()])
     submit = SubmitField('Sign Up')
-
-
