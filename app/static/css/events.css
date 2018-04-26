@@ -1,5 +1,5 @@
 body{
-background-image:url('/static/img/downtime.jpg');
+background-image:url('/static/img/anotherone.jpg');
 background-size: 20%;
 padding-bottom: 200vh;
 background-repeat: no-repeat;
@@ -25,8 +25,8 @@ h1{
     font-family: 'Rajdhani', sans-serif;
     font-size: 15em;
     color: grey;
-    margin-top: -12vh;
-    margin-left: 7vw;
+    margin-top: 30vh;
+    margin-left: 15vw;
     border-color: grey;
     padding-bottom: 9vh;
 
