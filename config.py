@@ -1,4 +1,4 @@
-import os
+import os 
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -12,5 +12,9 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI =  'postgresql+psycopg2://kiptim:jerotich@localhost/downtime'
+    SECRET_KEY='DOWNTIME2018'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
 
 config_options ={"production":ProdConfig,"default":DevConfig}
