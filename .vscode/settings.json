@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "${workspaceFolder}/virtual/bin/python",
     "python.linting.pylintEnabled": false
+=======
+    "python.pythonPath": "${workspaceFolder}/virtual/bin/python"
+>>>>>>> ad62fd7325d3f9ad7d7c50b22a52ca621befa050
 }
