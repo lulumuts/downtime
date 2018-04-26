@@ -6,6 +6,7 @@ background-size: cover;
 background-position: center;
 
 
+
 /* background-color: black; */
 }
 
@@ -15,11 +16,12 @@ background-position: center;
 h1{
   background: none;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 15em;
+  font-size: 30vh;
   color: grey;
-  padding-top: 25vh;
-  padding-left: 10vw;
+  margin-top: -13vh;
+  margin-left: -1em;
   border-color: grey;
+  padding-bottom: 1em;
 
 }
 .container{
@@ -27,4 +29,6 @@ h1{
   font-family: 'Rajdhani', sans-serif;
   font-size: 150%;
   opacity:0.7;
+  /* margin-top: 60vh; */
+  padding-bottom: 30vh;
 }
