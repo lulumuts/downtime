@@ -131,5 +131,5 @@ def contact():
 
 @main.route('/display')
 def display():
-
-    return render_template('display.html')
+    events = Events.query.all()
+    return render_template('display.html',events=events)

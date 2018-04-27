@@ -26,10 +26,11 @@
 
                       <li><a href="/">HOME</a></li>
                       <li><a href="/calendar">CALENDAR</a></li>
+
                       {% if current_user.is_anonymous%}
                       <li><a href="/authenticate/login">SIGN IN</a></li>
                       {%else%}
-
+                      <li><a href="/display">YOUR EVENTS</a></li>
                       <li><a href="/authenticate/logout">SIGN OUT</a></li>
                       {%endif%}
 

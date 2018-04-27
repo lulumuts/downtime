@@ -14,7 +14,7 @@ height:100%;
 
 .container {
   width:80%;
-  color:grey;
+  color:black;
   font-family: 'Rajdhani', sans-serif;
   opacity:0.8;
   margin-bottom: -10vh;
@@ -35,6 +35,15 @@ h1{
     border-color: grey;
     padding-bottom: 9vh;
 
+}
 
-
+#quick_form{
+  font-size: 7rem;
+}
+input[type="text"]
+{
+  font-size: 20px;
+}
+textarea{
+  font-size: 1rem;
 }

@@ -4,8 +4,11 @@
 
 {% block styles %}
   {{ super() }}
-  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/display.css')}}">
+
+  <link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+
 
 
 {% endblock %}
@@ -16,22 +19,42 @@
 
 
       <div class="container">
-        <h1>DOWNTIME</h1>
+        <h1>YOUR EVENTS</h1>
       </div>
 
       <section>
         <div class="container">
-      <h2>How it works</h2>
-      {%for event in events%}
-      {% if events%}
 
-      <p>{{events.name}}</p>
-      {%endif%}
-      {% endfor %}
-      </div>
+                {%for events in events %}
+                <div class="row">
+                  <div class="col-sm-2">
+                  <h2 style="margin-left:32vh;font-size:4rem"> {{events.id}}</h2>
+                  <div class="card" style="width: 48rem;height:15em;margin-bottom:1em;margin-left:22vw;padding-top:1rem">
+                    <div class="card-body" style="padding:3vh;">
+                      <h5 class="card-title" style="font-size:3.5rem;">
+                        <strong>WHO:</strong>   {{events.name}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><p style="font-size:3.5rem;"><strong>WHAT:</strong>  {{events.what}}</p>
+                      <p class="card-text" style="font-size:3.5rem;"><strong>WHEN:</strong>  ({{events.time}}),{{events.date}}</p>
+                      <p class="card-text" style="font-size:3.5rem;"><strong>WHERE:</strong>  {{events.where}}</p>
+                      <p class="card-text" style="font-size:3.5rem;"><strong>MESSAGE:</strong>  {{events.message}}</p></h6>
+
+
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+                {%endfor%}
+              </div>
+
+
+        </div>
+
+
+
+
 
     </section>
-
 
 
 

@@ -7,11 +7,11 @@ class EventsForm(FlaskForm):
 
     name = StringField('NAME', validators=[Required()])
     phone = StringField('PHONE', validators=[Required()])
-    what = TextAreaField('EVENT',validators=[Required()])
+    what = StringField('EVENT',validators=[Required()])
     Date = StringField("Enter Date yyyy,mm,dd:", validators=[Required()])
     Time = StringField("Enter Time: 00:00", validators=[Required()])
     where = StringField('WHERE',validators=[Required()])
-    message = TextAreaField('MESSAGE',validators=[Required()])
+    message = StringField('MESSAGE',validators=[Required()])
     submit = SubmitField('SUBMIT')
 
 class ContactForm(FlaskForm):
