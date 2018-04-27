@@ -128,3 +128,8 @@ def send():
 def contact():
 
     return render_template('calendar.html')
+
+@main.route('/display')
+def display():
+
+    return render_template('display.html')
