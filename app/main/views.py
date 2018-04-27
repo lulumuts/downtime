@@ -110,4 +110,5 @@ def contact():
 @main.route('/display')
 def display():
     events = Events.query.all()
+    events.reverse()
     return render_template('display.html',events=events)
